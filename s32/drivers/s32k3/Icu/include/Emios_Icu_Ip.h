@@ -401,6 +401,23 @@ eMios_Icu_ValueType Emios_Icu_Ip_GetEdgeNumbers
     uint8 hwChannel
 );
 
+/**
+* @brief      Icu driver function that gets Overflow Count of eMIOS channel.
+* @details    This function returns Overflow of MCB counter of eMIOS channel
+*
+* @param[in]  instance    - eMIOS module index
+* @param[in]  hwChannel   - eMIOS encoded hardware channel
+*
+* @return     uint32 - Counted Overflow instances
+*
+* @api
+*/
+eMios_Icu_ValueType Emios_Icu_Ip_GetOverflowCount
+(
+    uint8 instance,
+    uint8 hwChannel
+);
+
 #if (STD_ON == EMIOS_ICU_IP_SET_INITIAL_COUNTER)
 /**
 * @brief      Icu driver function that Set Initial setting of eMIOS Counter.

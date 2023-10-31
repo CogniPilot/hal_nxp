@@ -962,6 +962,11 @@ static inline void Emios_Icu_Ip_ReportEvents(uint8 instance, uint8 hwChannel, bo
 #if ((EMIOS_ICU_IP_TIMESTAMP_API == STD_ON)||(EMIOS_ICU_IP_SIGNAL_MEASUREMENT_API == STD_ON) || (EMIOS_ICU_IP_EDGE_COUNT_API == STD_ON))
 static inline void Emios_Icu_Ip_ReportOverflow(uint8 instance, uint8 hwChannel, boolean bOverflow)
 {
+
+    /* Count the number of overflow events for determining mechanical speed */
+    if (bOverflow)
+      eMios_Icu_Ip_ChState[eMios_Icu_Ip_IndexInChState[instance][hwChannel]].eMios_Icu_Ip_aNotifyCount++;
+
     /* Calling HLD Report wakeup and overflow for the logical channel */
     if(eMios_Icu_Ip_ChState[eMios_Icu_Ip_IndexInChState[instance][hwChannel]].callback != NULL_PTR)
     {

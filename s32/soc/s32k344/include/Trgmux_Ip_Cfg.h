@@ -4,7 +4,6 @@
  * SPDX-License-Identifier: BSD-3-Clause
  */
 
-/* Prevention from multiple including the same header */
 #ifndef TRGMUX_IP_CFG_H_
 #define TRGMUX_IP_CFG_H_
 
@@ -20,13 +19,7 @@ extern "C"
 * 3) internal and external interfaces from this unit
 ==================================================================================================*/
 #include "Trgmux_Ip_Types.h"
-[!IF "var:defined('postBuildVariant')"!][!//
-[!LOOP "variant:all()"!][!//
-#include "Trgmux_Ip_[!"."!]_PBcfg.h"
-[!ENDLOOP!][!//
-[!ELSE!][!//
-#include "Trgmux_Ip_PBcfg.h"
-[!ENDIF!][!//
+#include "Trgmux_Ip_Init_PBcfg.h"
 
 /*==================================================================================================
 *                                 SOURCE FILE VERSION INFORMATION
@@ -63,54 +56,27 @@ extern "C"
     )
     #error "Software Version Numbers of Trgmux_Ip_Cfg.h and Trgmux_Ip_Types.h are different"
 #endif
-[!IF "var:defined('postBuildVariant')"!][!//
-[!LOOP "variant:all()"!][!//
-/* Check if header file and Trgmux_Ip_[!"."!]_PBcfg.h file are of the same vendor */
-#if (TRGMUX_IP_CFG_VENDOR_ID != TRGMUX_IP_[!"."!]_PBCFG_VENDOR_ID)
-    #error "Trgmux_Ip_Cfg.h and Trgmux_Ip_[!"."!]_PBcfg.h have different vendor ids"
+/* Check if header file and Trgmux_Ip_Init_PBcfg.h file are of the same vendor */
+#if (TRGMUX_IP_CFG_VENDOR_ID != TRGMUX_IP_INIT_PBCFG_VENDOR_ID)
+    #error "Trgmux_Ip_Cfg.h and Trgmux_Ip_Init_PBcfg.h have different vendor ids"
 #endif
 
-/* Check if header file and Trgmux_Ip_[!"."!]_PBcfg.h file are of the same Autosar version */
-#if ((TRGMUX_IP_CFG_AR_RELEASE_MAJOR_VERSION != TRGMUX_IP_[!"."!]_PBCFG_AR_RELEASE_MAJOR_VERSION) || \
-     (TRGMUX_IP_CFG_AR_RELEASE_MINOR_VERSION != TRGMUX_IP_[!"."!]_PBCFG_AR_RELEASE_MINOR_VERSION) || \
-     (TRGMUX_IP_CFG_AR_RELEASE_REVISION_VERSION != TRGMUX_IP_[!"."!]_PBCFG_AR_RELEASE_REVISION_VERSION) \
+/* Check if header file and Trgmux_Ip_Init_PBcfg.h file are of the same Autosar version */
+#if ((TRGMUX_IP_CFG_AR_RELEASE_MAJOR_VERSION != TRGMUX_IP_INIT_PBCFG_AR_RELEASE_MAJOR_VERSION) || \
+     (TRGMUX_IP_CFG_AR_RELEASE_MINOR_VERSION != TRGMUX_IP_INIT_PBCFG_AR_RELEASE_MINOR_VERSION) || \
+     (TRGMUX_IP_CFG_AR_RELEASE_REVISION_VERSION != TRGMUX_IP_INIT_PBCFG_AR_RELEASE_REVISION_VERSION) \
     )
-    #error "AutoSar Version Numbers of Trgmux_Ip_Cfg.h and Trgmux_Ip_[!"."!]_PBcfg.h are different"
+    #error "AutoSar Version Numbers of Trgmux_Ip_Cfg.h and Trgmux_Ip_Init_PBcfg.h are different"
 #endif
 
-/* Check if header file and Trgmux_Ip_[!"."!]_PBcfg.h file are of the same Software version */
-#if ((TRGMUX_IP_CFG_SW_MAJOR_VERSION != TRGMUX_IP_[!"."!]_PBCFG_SW_MAJOR_VERSION) || \
-     (TRGMUX_IP_CFG_SW_MINOR_VERSION != TRGMUX_IP_[!"."!]_PBCFG_SW_MINOR_VERSION) || \
-     (TRGMUX_IP_CFG_SW_PATCH_VERSION != TRGMUX_IP_[!"."!]_PBCFG_SW_PATCH_VERSION) \
+/* Check if header file and Trgmux_Ip_INIT_PBcfg.h file are of the same Software version */
+#if ((TRGMUX_IP_CFG_SW_MAJOR_VERSION != TRGMUX_IP_INIT_PBCFG_SW_MAJOR_VERSION) || \
+     (TRGMUX_IP_CFG_SW_MINOR_VERSION != TRGMUX_IP_INIT_PBCFG_SW_MINOR_VERSION) || \
+     (TRGMUX_IP_CFG_SW_PATCH_VERSION != TRGMUX_IP_INIT_PBCFG_SW_PATCH_VERSION) \
     )
-    #error "Software Version Numbers of Trgmux_Ip_Cfg.h and Trgmux_Ip_[!"."!]_PBcfg.h are different"
-#endif
-[!ENDLOOP!][!//
-[!ELSE!][!//
-/* Check if header file and Trgmux_Ip_PBcfg.h file are of the same vendor */
-#if (TRGMUX_IP_CFG_VENDOR_ID != TRGMUX_IP_PBCFG_VENDOR_ID)
-    #error "Trgmux_Ip_Cfg.h and Trgmux_Ip_PBcfg.h have different vendor ids"
+    #error "Software Version Numbers of Trgmux_Ip_Cfg.h and Trgmux_Ip_Init_PBcfg.h are different"
 #endif
 
-/* Check if header file and Trgmux_Ip_PBcfg.h file are of the same Autosar version */
-#if ((TRGMUX_IP_CFG_AR_RELEASE_MAJOR_VERSION != TRGMUX_IP_PBCFG_AR_RELEASE_MAJOR_VERSION) || \
-     (TRGMUX_IP_CFG_AR_RELEASE_MINOR_VERSION != TRGMUX_IP_PBCFG_AR_RELEASE_MINOR_VERSION) || \
-     (TRGMUX_IP_CFG_AR_RELEASE_REVISION_VERSION != TRGMUX_IP_PBCFG_AR_RELEASE_REVISION_VERSION) \
-    )
-    #error "AutoSar Version Numbers of Trgmux_Ip_Cfg.h and Trgmux_Ip_PBcfg.h are different"
-#endif
-
-/* Check if header file and Trgmux_Ip_PBcfg.h file are of the same Software version */
-#if ((TRGMUX_IP_CFG_SW_MAJOR_VERSION != TRGMUX_IP_PBCFG_SW_MAJOR_VERSION) || \
-     (TRGMUX_IP_CFG_SW_MINOR_VERSION != TRGMUX_IP_PBCFG_SW_MINOR_VERSION) || \
-     (TRGMUX_IP_CFG_SW_PATCH_VERSION != TRGMUX_IP_PBCFG_SW_PATCH_VERSION) \
-    )
-    #error "Software Version Numbers of Trgmux_Ip_Cfg.h and Trgmux_Ip_PBcfg.h are different"
-#endif
-[!ENDIF!][!//
-
-[!IF "node:value(./MclGeneral/MclTrgMux/MclEnableTrgMux)"!][!//
-[!INCLUDE "Trgmux_Ip_RegOperations.m"!]
 /*==================================================================================================
 *                                       DEFINES AND MACROS
 ==================================================================================================*/
@@ -123,15 +89,9 @@ extern const uint8 Trgmux_Ip_InstanceArr[TRGMUX_IP_NOF_INSTANCE];
 #define MCL_STOP_SEC_CONST_8
 #include "Mcl_MemMap.h"
 
+
 /* TRGMUX Init Configuration */
-[!IF "var:defined('postBuildVariant')"!][!//
-[!LOOP "variant:all()"!][!//
-extern const Trgmux_Ip_InitType Trgmux_Ip_xTrgmuxInitPB_[!"."!];
-[!ENDLOOP!][!//
-[!ELSE!][!//
 extern const Trgmux_Ip_InitType Trgmux_Ip_xTrgmuxInitPB;
-[!ENDIF!][!//
-[!ENDIF!][!//
 
 #ifdef __cplusplus
 }

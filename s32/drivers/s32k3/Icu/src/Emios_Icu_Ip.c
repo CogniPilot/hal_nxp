@@ -533,6 +533,8 @@ eMios_Icu_Ip_StatusType Emios_Icu_Ip_Init(uint8 instance, const eMios_Icu_Ip_Con
         /* Register Protection - Set UAA bit in GCR - allow USER MODE access */
         Call_Emios_Icu_Ip_SetUserAccessAllowed((uint32)s_emiosBase[instance]);
 
+        s_emiosBase[instance]->MCR = 0x34000000;
+
         for (index=0U; index < userConfig->nNumChannels; index++)
         {
             hwChannel   = (*userConfig->pChannelsConfig)[index].hwChannel;
@@ -1282,6 +1284,15 @@ eMios_Icu_ValueType Emios_Icu_Ip_GetEdgeNumbers
     }
     return u16Result;
 
+}
+
+eMios_Icu_ValueType Emios_Icu_Ip_GetOverflowCount
+(
+    uint8 instance,
+    uint8 hwChannel
+)
+{
+    return (eMios_Icu_Ip_ChState[eMios_Icu_Ip_IndexInChState[instance][hwChannel]].eMios_Icu_Ip_aNotifyCount);
 }
 
 #if (STD_ON == EMIOS_ICU_IP_SET_INITIAL_COUNTER)

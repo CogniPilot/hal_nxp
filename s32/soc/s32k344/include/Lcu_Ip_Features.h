@@ -8,11 +8,6 @@
 #ifndef S32K3XX_LCU_IP_FEATURES_H_
 #define S32K3XX_LCU_IP_FEATURES_H_
 
-#ifdef __cplusplus
-extern "C"
-{
-#endif
-
 /**
 *   @file    Lcu_Ip_Features.h
 *
@@ -26,28 +21,7 @@ extern "C"
 */
 
 #include "Mcal.h"
-[!INDENT "0"!][!//
-[!IF "node:exists(as:modconf("Resource")[1]/ResourceGeneral/ResourceSubderivative)"!][!//
-    [!VAR "DerivativeName" = "text:toupper(substring-before(as:modconf("Resource")[1]/ResourceGeneral/ResourceSubderivative,'_'))"!]
-    [!IF "contains($DerivativeName, 'S32K3')"!][!//
-        [!IF "contains($DerivativeName, 'S32K396') or contains($DerivativeName, 'S32K394')"!][!//
-            [!CODE!][!WS "0"!]#include "S32K39_LCU.h"[!CR!][!ENDCODE!][!//
-        [!ELSEIF "contains($DerivativeName, 'S32K310')"!][!//
-            [!CODE!][!WS "0"!]#include "S32K311_LCU.h"[!CR!][!ENDCODE!][!//
-        [!ELSEIF "contains($DerivativeName, 'S32K328') or contains($DerivativeName, 'S32K338') or contains($DerivativeName, 'S32K348')"!][!//
-            [!CODE!][!WS "0"!]#include "S32K358_LCU.h"[!CR!][!ENDCODE!][!//
-        [!ELSE!][!//
-            [!CODE!][!WS "0"!]#include "[!"$DerivativeName"!]_LCU.h"[!CR!][!ENDCODE!][!//
-        [!ENDIF!][!//
-    [!ELSEIF "contains($DerivativeName, 'S32M276') or contains($DerivativeName, 'S32M274')"!][!//
-        [!CODE!][!WS "0"!]#include "S32M27x_LCU.h"[!CR!][!ENDCODE!][!//
-    [!ELSE!][!//
-        [!ERROR "The Resource plugin or ResourceSubderivative field is not available for header file inclusion."!][!//
-    [!ENDIF!][!//
-[!ELSE!][!//
-    [!ERROR "The Resource plugin or ResourceSubderivative field is not available for header file inclusion."!][!//
-[!ENDIF!][!//
-[!ENDINDENT!][!//
+#include "S32K344_LCU.h"
 
 /*==================================================================================================
                                SOURCE FILE VERSION INFORMATION
@@ -71,6 +45,7 @@ extern "C"
     #error "AutoSar Version Numbers of Lcu_Ip_Features.h and Mcal.h are different"
 #endif
 #endif
+
 
 /*==================================================================================================
                                             DEFINES
@@ -96,10 +71,6 @@ extern "C"
 #define LUT_INT_ENABLE_MASK                         ((uint32)(0x01U))
 #define FORCE_INT_ENABLE_MASK                       ((uint32)(0x10000U))
 /** @} */
-
-#ifdef __cplusplus
-}
-#endif
 
 #endif  /* #ifndef S32K3XX_LCU_IP_FEATURES_H_ */
 

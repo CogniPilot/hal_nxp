@@ -46,11 +46,10 @@ extern "C"
     #error "Software Version Numbers of Lcu_Ip_Cfg.c and Lcu_Ip_Cfg.h are different"
 #endif
 
+
 /**
 * @page misra_violations MISRA-C:2012 violations
 **/
-[!IF "node:value(./MclGeneral/MclLcuConfig/MclEnableLcu)"!][!//
-[!INCLUDE "Lcu_Ip_RegOperations.m"!]
 #define MCL_START_SEC_CONFIG_DATA_UNSPECIFIED
 /* @violates @ref Mcl_Lcu_h_REF_1 MISRA 2012 Required Directive 4.10, Precautions shall be taken in order to prevent the contents of a header file being included more than once. */
 #include "Mcl_MemMap.h"
@@ -83,7 +82,6 @@ const Lcu_Ip_LogicOutputConfigType Lcu_Ip_xLogicOutputResetConfig =
 /* @violates @ref Mcl_Lcu_h_REF_1 MISRA 2012 Required Directive 4.10, Precautions shall be taken in order to prevent the contents of a header file being included more than once. */
 #include "Mcl_MemMap.h"
 
-[!ENDIF!][!//
 
 #ifdef __cplusplus
 }

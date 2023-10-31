@@ -8,11 +8,6 @@
 #ifndef LCU_IP_CFG_DEFINES_H_
 #define LCU_IP_CFG_DEFINES_H_
 
-#ifdef __cplusplus
-extern "C"
-{
-#endif
-
 #include "StandardTypes.h"
 #include "PlatformTypes.h"
 
@@ -47,43 +42,22 @@ extern "C"
 /*===============================================================================================
                                        DEFINES AND MACROS
 ===============================================================================================*/
-/* LCU Available */
-[!IF "node:value(./MclGeneral/MclLcuConfig/MclEnableLcu)"!][!//
-#define LCU_IP_IS_AVAILABLE                      STD_ON
-[!ELSE!][!//
-#define LCU_IP_IS_AVAILABLE                      STD_OFF
-[!ENDIF!][!//
 
-/* Not Support DEV ERRPR DETECT */
-#define LCU_IP_DEV_ERROR_DETECT                  STD_OFF
+/* LCU Available */
+#define LCU_IP_IS_AVAILABLE                      STD_ON
 
 /* SYNC Functions Available */
-[!IF "(node:value(./MclGeneral/MclLcuConfig/MclEnableLcu) = 'true') and (node:value(./MclGeneral/MclLcuConfig/MclEnableLcuSyncFunc) = 'true')"!][!//
 #define LCU_IP_SYNC_FUNC_IS_AVAILABLE            STD_ON
-[!ELSE!][!//
-#define LCU_IP_SYNC_FUNC_IS_AVAILABLE            STD_OFF
-[!ENDIF!][!//
 
-/* ASYNC Functions Available */
-[!IF "(node:value(./MclGeneral/MclLcuConfig/MclEnableLcu) = 'true') and (node:value(./MclGeneral/MclLcuConfig/MclEnableLcuAsyncFunc) = 'true')"!][!//
-#define LCU_IP_ASYNC_FUNC_IS_AVAILABLE           STD_ON
-[!ELSE!][!//
+/* SYNC Functions Available */
 #define LCU_IP_ASYNC_FUNC_IS_AVAILABLE           STD_OFF
-[!ENDIF!][!//
 
-[!IF "node:value(./MclGeneral/MclLcuConfig/MclEnableLcu)"!][!//
-/* LCU multi cores */
-[!IF "node:value(./MclGeneral/MclEnableMulticoreSupport)='true' and (num:i(ecu:get('Mcl.MultiCore.Support')) = 1)"!][!//
-#define LCU_IP_MULTICORE_IS_AVAILABLE            STD_ON
-[!ELSE!][!//
-#define LCU_IP_MULTICORE_IS_AVAILABLE            STD_OFF
-[!ENDIF!][!//
-[!ELSE!][!//
-#define LCU_IP_MULTICORE_IS_AVAILABLE            STD_OFF
-[!ENDIF!][!//
+/* Support DEV ERROR DETECT */
+#define LCU_IP_DEV_ERROR_DETECT                  STD_OFF
 
-[!IF "node:value(./MclGeneral/MclLcuConfig/MclEnableLcu)"!][!//
 /* LCU multi cores */
+#define LCU_IP_MULTICORE_IS_AVAILABLE            STD_OFF
+
 
 /*-------------------------------------------------------------------/
 /                       LCU HARDWARE INSTANCES                       /
@@ -220,11 +194,6 @@ extern "C"
 #define LCU_IP_CLEAR_FORCE_SIGNAL_ON_RISING_EDGE                        ((uint8)(1U))
 #define LCU_IP_CLEAR_FORCE_SIGNAL_AFTER_CLEAR_STATUS                    ((uint8)(2U))
 #define LCU_IP_CLEAR_FORCE_SIGNAL_ON_RISING_EDGE_AFTER_CLEAR_STATUS     ((uint8)(3U))
-[!ENDIF!]
-
-#ifdef __cplusplus
-}
-#endif
 
 #endif  /* #ifndef LCU_IP_CFG_DEFINES_H_ */
 
