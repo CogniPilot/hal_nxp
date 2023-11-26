@@ -229,10 +229,10 @@ Trgmux_Ip_StatusType Trgmux_Ip_Init(const Trgmux_Ip_InitType * const pxTrgmuxIni
 
     for(LocInstanceIdx = 0U; LocInstanceIdx < TRGMUX_IP_NOF_INSTANCE; LocInstanceIdx++)
     {
-        LocHwInst = Trgmux_Ip_InstanceArr[LocInstanceIdx];
-        /* Clear register */
-        LocTrgmuxBase = Trgmux_Ip_paxBaseInst[LocHwInst];
+	LocHwInst = 0; //Trgmux_Ip_InstanceArr[LocInstanceIdx];
 
+        /* Clear register */
+	LocTrgmuxBase = Trgmux_Ip_paxBaseInst[LocHwInst];
     #ifdef MCAL_ENABLE_USER_MODE_SUPPORT
         #if (STD_ON == TRGMUX_IP_USER_MODE_SUPPORT_IS_AVAILABLE)
             if((Std_ReturnType)TRGMUX_IP_STATUS_SUCCESS != Trgmux_Ip_HwAcc_Init(LocTrgmuxBase, TRGMUX_IP_TRGMUXn_INSTANCE_COUNT(LocHwInst)))
